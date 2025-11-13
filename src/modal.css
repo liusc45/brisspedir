@@ -1,38 +1,63 @@
-  a {
+/* ===== VARIABLES IMPORT ===== */
+:root {
+    --primary-gradient: linear-gradient(135deg, #f8b4d9 0%, #e6a8c5 50%, #c895b8 100%);
+    --secondary-gradient: linear-gradient(135deg, #ffd4e5 0%, #f4b8d1 100%);
+    --accent-color: #d46a9e;
+    --accent-light: #f4c2d8;
+    --accent-dark: #a8557a;
+    --text-primary: #fff;
+    --text-dark: #333;
+    --shadow-pink: rgba(212, 106, 158, 0.5);
+    --shadow-light: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== RESET & BASE STYLES ===== */
+a {
     color: inherit;
     text-decoration: none;
-  }
-  
-  button {
+}
+
+button {
     cursor: pointer;
     background: transparent;
     border: none;
     outline: none;
     font-size: inherit;
-  }
-  
-  body {
+    font-family: inherit;
+}
+
+body {
     display: flex;
     align-items: center;
     justify-content: center;
     font: 16px/1.5 sans-serif;
-  }
-  
-  .btn-group {
+}
+
+.btn-group {
     text-align: center;
-  }
-  
-  .open-modal {
-    font-weight: bold;
+}
+
+.open-modal {
+    font-weight: 600;
     padding: 0.75rem 1.75rem;
     margin-bottom: 1rem;
-    border-radius: 5px;
-  }
-  
-  
-  /* MODAL
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .modal {
+    border-radius: 25px;
+    background: var(--primary-gradient);
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px var(--shadow-pink);
+    transition: all 0.3s ease;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.open-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-pink);
+}
+
+/* ===== MODAL STYLES ===== */
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,165 +67,318 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background: var(--black);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
     cursor: pointer;
     visibility: hidden;
     opacity: 0;
     transition: all 0.35s ease-in;
-    
-  }
-  
-  .modal.is-visible {
+    z-index: 1000;
+}
+
+.modal.is-visible {
     visibility: visible;
     opacity: 1;
-  }
-  
-  .modal-dialog {
+}
+
+.modal-dialog {
     position: relative;
     max-width: 800px;
     max-height: 80vh;
-    border-radius: 5px;
-    background: var(--white);
+    border-radius: 20px;
+    background: var(--secondary-gradient);
     overflow: auto;
     cursor: default;
-    background-color: fuchsia;
-    position: absolute;
-  }
-  
-  .modal-dialog > * {
-    padding: 1rem;
-  }
-  
-  .modal-header,
-  .modal-footer {
-    background: 
-  }
-  
-  .modal-header {
+    box-shadow: 0 10px 40px var(--shadow-pink);
+    border: 2px solid var(--accent-light);
+    animation: modalSlideIn 0.5s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-dialog > * {
+    padding: 1.5rem;
+}
+
+.modal-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #77028f;
-  }
-  
-  .modal-header .close-modal {
+    background: var(--primary-gradient);
+    border-radius: 18px 18px 0 0;
+    padding: 1.5rem;
+}
+
+.modal-header h2, .modal-header h4 {
+    color: var(--text-primary);
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.modal-content {
+    background: var(--secondary-gradient);
+    padding: 2rem;
+    text-align: center;
+}
+
+.modal-content h3 {
+    color: var(--accent-dark);
     font-size: 1.5rem;
-  }
-  
-  .modal p + p {
+    line-height: 1.6;
+    margin: 0;
+}
+
+.modal-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 15px;
     margin-top: 1rem;
-    
-  }
+    box-shadow: 0 8px 25px var(--shadow-pink);
+    transition: transform 0.3s ease;
+}
+
+.modal-image:hover {
+    transform: scale(1.02);
+}
+
+.modal-header .close-modal {
+    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-header .close-modal:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.modal p + p {
+    margin-top: 1rem;
+}
+
+.modal-footer {
+    background: var(--primary-gradient);
+    border-radius: 0 0 18px 18px;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
   
   
-  /* ANIMATIONS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  [data-animation] .modal-dialog {
+/* ===== ANIMATIONS ===== */
+[data-animation] .modal-dialog {
     opacity: 0;
-    transition: all 0.5s var(--bounceEasing);
-  }
-  
-  [data-animation].is-visible .modal-dialog {
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+[data-animation].is-visible .modal-dialog {
     opacity: 1;
     transition-delay: 0.2s;
-  }
-  
-  [data-animation="slideInOutDown"] .modal-dialog {
+}
+
+[data-animation="slideInOutDown"] .modal-dialog {
     transform: translateY(100%);
-  }
-  
-  [data-animation="slideInOutTop"] .modal-dialog {
+}
+
+[data-animation="slideInOutTop"] .modal-dialog {
     transform: translateY(-100%);
-  }
-  
-  [data-animation="slideInOutLeft"] .modal-dialog {
+}
+
+[data-animation="slideInOutLeft"] .modal-dialog {
     transform: translateX(-100%);
-  }
-  
-  [data-animation="slideInOutRight"] .modal-dialog {
+}
+
+[data-animation="slideInOutRight"] .modal-dialog {
     transform: translateX(100%);
-  }
-  
-  [data-animation="zoomInOut"] .modal-dialog {
+}
+
+[data-animation="zoomInOut"] .modal-dialog {
     transform: scale(0.2);
-  }
-  
-  [data-animation="rotateInOutDown"] .modal-dialog {
+}
+
+[data-animation="rotateInOutDown"] .modal-dialog {
     transform-origin: top left;
     transform: rotate(-1turn);
-  }
-  
-  [data-animation="mixInAnimations"].is-visible .modal-dialog {
-    animation: mixInAnimations 2s 0.2s linear forwards;
-  }
-  
-  [data-animation="slideInOutDown"].is-visible .modal-dialog,
-  [data-animation="slideInOutTop"].is-visible .modal-dialog,
-  [data-animation="slideInOutLeft"].is-visible .modal-dialog,
-  [data-animation="slideInOutRight"].is-visible .modal-dialog,
-  [data-animation="zoomInOut"].is-visible .modal-dialog,
-  [data-animation="rotateInOutDown"].is-visible .modal-dialog {
+}
+
+[data-animation="mixInAnimations"].is-visible .modal-dialog {
+    animation: mixInAnimations 2s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+[data-animation="slideInOutDown"].is-visible .modal-dialog,
+[data-animation="slideInOutTop"].is-visible .modal-dialog,
+[data-animation="slideInOutLeft"].is-visible .modal-dialog,
+[data-animation="slideInOutRight"].is-visible .modal-dialog,
+[data-animation="zoomInOut"].is-visible .modal-dialog,
+[data-animation="rotateInOutDown"].is-visible .modal-dialog {
     transform: none;
-  }
-  
-  @keyframes mixInAnimations {
+}
+
+@keyframes mixInAnimations {
     0% {
-      transform: translateX(-100%);
+        transform: translateX(-100%);
     }
-  
     10% {
-      transform: translateX(0);
+        transform: translateX(0) rotate(20deg);
     }
-  
     20% {
-      transform: rotate(20deg);
+        transform: rotate(-20deg);
     }
-  
     30% {
-      transform: rotate(-20deg);
+        transform: rotate(15deg);
     }
-  
     40% {
-      transform: rotate(15deg);
+        transform: rotate(-15deg);
     }
-  
     50% {
-      transform: rotate(-15deg);
+        transform: rotate(10deg);
     }
-  
     60% {
-      transform: rotate(10deg);
+        transform: rotate(-10deg);
     }
-  
     70% {
-      transform: rotate(-10deg);
+        transform: rotate(5deg);
     }
-  
     80% {
-      transform: rotate(5deg);
+        transform: rotate(-5deg);
     }
-  
     90% {
-      transform: rotate(-5deg);
+        transform: rotate(2deg);
     }
-  
     100% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-  }
-  
-  
-  /* FOOTER
-  –––––––––––––––––––––––––––––––––––––––––––––––––– */
-  .page-footer {
+}
+
+/* ===== RESPONSIVE MODAL ===== */
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 92vw;
+        max-height: 85vh;
+        margin: 0.5rem;
+    }
+
+    .modal-header h2, .modal-header h4 {
+        font-size: 1.4rem;
+    }
+
+    .modal-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-image {
+        max-height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-dialog {
+        max-width: 95vw;
+        max-height: 90vh;
+        border-radius: 15px;
+        margin: 0.3rem;
+    }
+
+    .modal-header {
+        padding: 1rem;
+    }
+
+    .modal-header h2, .modal-header h4 {
+        font-size: 1.2rem;
+    }
+
+    .modal-content {
+        padding: 1rem;
+    }
+
+    .modal-content h3 {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .modal-image {
+        max-height: 45vh;
+        border-radius: 10px;
+    }
+
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    .modal-footer button {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .modal-dialog {
+        max-width: 98vw;
+        max-height: 95vh;
+    }
+
+    .modal-header h2, .modal-header h4 {
+        font-size: 1rem;
+    }
+
+    .modal-content h3 {
+        font-size: 0.9rem;
+    }
+
+    .modal-image {
+        max-height: 40vh;
+    }
+}
+
+/* ===== FOOTER ===== */
+.page-footer {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
-  }
-  
-  .page-footer span {
-    color: #e31b23;
-  }
-  ::-webkit-scrollbar {
-    display: none;
-    }
+}
+
+.page-footer span {
+    color: var(--accent-color);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-gradient);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-dark);
+}

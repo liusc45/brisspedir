@@ -11,64 +11,63 @@
 </head>
 <body>
     <div class="contenedor">
-        
-        <class class="container">
+        <div class="container">
             <h1 class="letra-neon">¿Quieres ser mi Novia?</h1>
             <p class="neon3">
                 <span class="flicker1">♣</span>
                 <span class="flicker2">♣</span>
                 <span class="flicker3">♣</span>
             </p>
-        </class>
-        <div>
-            <img src="img/imagen.png" width="30%" >
-            <br>
         </div>
-            <button id="yesBtn" class="bn-neon open-modal" data-open="modal1">SI</button>
 
-              <div class="modal" id="modal1" data-animation="slideInOutLeft">
-                <div class="modal-dialog">
-                  <header class="modal-header">
-                    <h2>😏ji ji🙊</h2>
-                    <button class="close-modal" aria-label="close modal" data-close>
-                      ❌ 
-                    </button>
-                  </header>
-                  <section class="modal-content">
-                    <h3>🌹🌹🌹🌹 Rosas con 🤣Espinas
-                        😎😹🤣🌿🐵😺 Me pides curita 😹😹</h3><hr><hr>
-                  </section>
-                  <footer class="modal-footer">
-                    <button type="button" class="open-modal bn-neon" id="yesBtn" style="align-items: center;" data-open="modal2">
-                            Click!
-                    </button>
-                  </footer>
-                </div>
-              </div>
-              
-              <div class="modal" id="modal2" data-animation="mixInAnimations">
-                <div class="modal-dialog">
-                  <header class="modal-header">
-                    <h4>🙊🙊🙊🍻🍻
-                    </h4>
-                    <button class="close-modal" aria-label="close modal" data-close>
-                        ❌  
-                    </button>
-                  </header>
-                  <section class="modal-content">
-                      <img src="img/meme.jpg" alt="">
-                  </section>
-  
-                </div>
-              </div>
-            <button id="noBtn">NO</button>
+        <div class="image-container">
+            <img src="img/declaracion.jpg" alt="Imagen romántica" class="main-image">
+        </div>
 
-    
-    <br><br><br><br>
+        <div class="button-group">
+            <button id="yesBtn" class="btn-yes open-modal" data-open="modal1">SI</button>
+            <button id="noBtn" class="btn-no">NO</button>
+        </div>
+    </div>
 
-    <audio autoplay controls>
-        <source src="media/audio.mp3" type="audio/mp3">
-    </audio>
+    <!-- Modal 1 -->
+    <div class="modal" id="modal1" data-animation="slideInOutLeft">
+        <div class="modal-dialog">
+            <header class="modal-header">
+                <h2>💖💖💖</h2>
+                <button class="close-modal" aria-label="close modal" data-close>
+                    ❌
+                </button>
+            </header>
+            <section class="modal-content">
+                <h3>🌹 Desde que te conozco, mi mundo es más brillante 🌟
+                    cada día a tu lado es un regalo 💝
+                    ¿Quisieras ser mi novia y caminar junta/o por la vida? 🥰</h3>
+            </section>
+            <footer class="modal-footer">
+                <button type="button" class="open-modal btn-yes" data-open="modal2">
+                    ¡Sí, quiero! 🥰
+                </button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal" id="modal2" data-animation="mixInAnimations">
+        <div class="modal-dialog">
+            <header class="modal-header">
+                <h4>💕💕💕¡Te amo!💕💕💕</h4>
+                <button class="close-modal" aria-label="close modal" data-close>
+                    ❌
+                </button>
+            </header>
+            <section class="modal-content">
+                <h3>🎉 ¡Soy la persona más feliz del mundo! 🎊
+                    Ahora somos un "nosotros" para siempre 💞
+                    Te amo con todo mi corazón ❤️‍🔥</h3>
+                <img src="img/meme.jpg" alt="Foto especial" class="modal-image">
+            </section>
+        </div>
     </div>
     <div class="burbujas">
         <div class="burbuja"></div>
