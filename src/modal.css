@@ -1,14 +1,16 @@
-/* ===== VARIABLES IMPORT ===== */
+/* ===== VARIABLES IMPORT - PALETA ROJO, NEGRO, ROSA Y GRIS ===== */
 :root {
-    --primary-gradient: linear-gradient(135deg, #f8b4d9 0%, #e6a8c5 50%, #c895b8 100%);
-    --secondary-gradient: linear-gradient(135deg, #ffd4e5 0%, #f4b8d1 100%);
-    --accent-color: #d46a9e;
-    --accent-light: #f4c2d8;
-    --accent-dark: #a8557a;
-    --text-primary: #fff;
-    --text-dark: #333;
-    --shadow-pink: rgba(212, 106, 158, 0.5);
-    --shadow-light: rgba(255, 255, 255, 0.3);
+    /* Paleta armonizada profesional */
+    --primary-gradient: linear-gradient(135deg, #2C2C2C 0%, #3A3A3A 50%, #1A1A1A 100%);
+    --secondary-gradient: linear-gradient(135deg, #E5E5E5 0%, #D0D0D0 100%);
+    --accent-color: #A63D40;
+    --accent-light: #D4A5A5;
+    --accent-dark: #8B2E33;
+    --text-primary: #FFFFFF;
+    --text-dark: #2C2C2C;
+    --shadow-dark: rgba(44, 44, 44, 0.6);
+    --shadow-light: rgba(229, 229, 229, 0.4);
+    --border-light: rgba(229, 229, 229, 0.3);
 }
 
 /* ===== RESET & BASE STYLES ===== */
@@ -44,16 +46,18 @@ body {
     border-radius: 25px;
     background: var(--primary-gradient);
     color: var(--text-primary);
-    box-shadow: 0 4px 15px var(--shadow-pink);
+    box-shadow: 0 4px 15px var(--shadow-dark);
     transition: all 0.3s ease;
-    border: none;
+    border: 2px solid var(--border-light);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .open-modal:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--shadow-pink);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+    border-color: var(--accent-light);
+    background: linear-gradient(135deg, #3A3A3A 0%, #A63D40 50%, #2C2C2C 100%);
 }
 
 /* ===== MODAL STYLES ===== */
@@ -89,8 +93,8 @@ body {
     background: var(--secondary-gradient);
     overflow: auto;
     cursor: default;
-    box-shadow: 0 10px 40px var(--shadow-pink);
-    border: 2px solid var(--accent-light);
+    box-shadow: 0 10px 40px var(--shadow-dark), 0 4px 20px rgba(166, 61, 64, 0.4);
+    border: 2px solid var(--border-light);
     animation: modalSlideIn 0.5s ease-out;
 }
 
@@ -116,12 +120,14 @@ body {
     background: var(--primary-gradient);
     border-radius: 18px 18px 0 0;
     padding: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .modal-header h2, .modal-header h4 {
     color: var(--text-primary);
     margin: 0;
     font-size: 1.8rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .modal-content {
@@ -131,10 +137,11 @@ body {
 }
 
 .modal-content h3 {
-    color: var(--accent-dark);
+    color: var(--text-dark);
     font-size: 1.5rem;
     line-height: 1.6;
     margin: 0;
+    font-weight: 600;
 }
 
 .modal-image {
@@ -144,12 +151,14 @@ body {
     object-fit: contain;
     border-radius: 15px;
     margin-top: 1rem;
-    box-shadow: 0 8px 25px var(--shadow-pink);
+    box-shadow: 0 8px 25px var(--shadow-dark), 0 4px 15px rgba(166, 61, 64, 0.3);
     transition: transform 0.3s ease;
+    border: 2px solid var(--border-light);
 }
 
 .modal-image:hover {
     transform: scale(1.02);
+    border-color: var(--accent-light);
 }
 
 .modal-header .close-modal {
@@ -157,17 +166,19 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(229, 229, 229, 0.2);
     color: var(--text-primary);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgba(229, 229, 229, 0.3);
 }
 
 .modal-header .close-modal:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(166, 61, 64, 0.3);
     transform: rotate(90deg);
+    border-color: var(--accent-light);
 }
 
 .modal p + p {
@@ -181,6 +192,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    border-top: 1px solid var(--border-light);
 }
   
   

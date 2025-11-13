@@ -1,15 +1,20 @@
-/* ===== VARIABLES CSS ===== */
+/* ===== VARIABLES CSS - PALETA ROJO, NEGRO, ROSA Y GRIS ===== */
 :root {
-    --primary-gradient: linear-gradient(135deg, #f8b4d9 0%, #e6a8c5 50%, #c895b8 100%);
-    --secondary-gradient: linear-gradient(135deg, #ffd4e5 0%, #f4b8d1 100%);
-    --accent-color: #d46a9e;
-    --accent-light: #f4c2d8;
-    --accent-dark: #a8557a;
-    --text-primary: #fff;
-    --text-secondary: #f8e8f0;
-    --shadow-pink: rgba(212, 106, 158, 0.5);
-    --shadow-light: rgba(255, 255, 255, 0.3);
-    --bubble-color: rgba(255, 255, 255, 0.2);
+    /* Paleta armonizada profesional */
+    --primary-gradient: linear-gradient(135deg, #2C2C2C 0%, #3A3A3A 50%, #1A1A1A 100%);
+    --secondary-gradient: linear-gradient(135deg, #E5E5E5 0%, #D0D0D0 100%);
+    --accent-color: #A63D40;
+    --accent-light: #D4A5A5;
+    --accent-dark: #8B2E33;
+    --text-primary: #FFFFFF;
+    --text-secondary: #F5F5F5;
+    --text-muted: #9B9B9B;
+    --text-dark: #2C2C2C;
+    --shadow-dark: rgba(44, 44, 44, 0.6);
+    --shadow-light: rgba(229, 229, 229, 0.4);
+    --bubble-color: rgba(212, 165, 165, 0.25);
+    --border-light: rgba(229, 229, 229, 0.3);
+    --glass-bg: rgba(44, 44, 44, 0.3);
 }
 
 /* ===== RESET ===== */
@@ -20,15 +25,16 @@
 }
 
 body {
-    background: linear-gradient(135deg, #c895b8 0%, #d46a9e 50%, #f4b8d1 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 15s ease infinite;
+    background: linear-gradient(135deg, #2C2C2C 0%, #A63D40 30%, #3A3A3A 70%, #1A1A1A 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease infinite;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /* ===== LAYOUT ===== */
 .contenedor {
     width: 100%;
@@ -60,25 +66,16 @@ body {
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
-    box-shadow: 0 8px 30px var(--shadow-pink), 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 30px var(--shadow-dark), 0 4px 15px rgba(166, 61, 64, 0.3);
     transition: all 0.3s ease;
     display: block;
+    border: 3px solid var(--border-light);
 }
 
 .main-image:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 40px var(--shadow-pink), 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Optimize image loading */
-.main-image {
-    loading: lazy;
-    background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
-    padding: 2px;
-}
-
-.main-image:not([src]) {
-    background: transparent;
+    box-shadow: 0 12px 40px var(--shadow-dark), 0 6px 20px rgba(166, 61, 64, 0.5);
+    border-color: var(--accent-light);
 }
 
 /* ===== BUTTON GROUP ===== */
@@ -118,8 +115,8 @@ button {
     background: var(--primary-gradient);
     color: var(--text-primary);
     border-radius: 50px;
-    box-shadow: 0 4px 15px var(--shadow-pink);
-    border: 2px solid transparent;
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    border: 2px solid var(--text-muted);
     position: relative;
     overflow: hidden;
 }
@@ -131,14 +128,15 @@ button {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(229, 229, 229, 0.4), transparent);
     transition: left 0.5s;
 }
 
 .btn-yes:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px var(--shadow-pink);
+    box-shadow: 0 6px 20px var(--shadow-dark);
     border-color: var(--accent-light);
+    background: linear-gradient(135deg, #3A3A3A 0%, #A63D40 50%, #2C2C2C 100%);
 }
 
 .btn-yes:hover::before {
@@ -151,10 +149,10 @@ button {
 
 .btn-no {
     background: var(--secondary-gradient);
-    color: var(--accent-dark);
+    color: var(--text-dark);
     border-radius: 50px;
     box-shadow: 0 4px 15px var(--shadow-light);
-    border: 2px solid var(--accent-color);
+    border: 2px solid var(--text-muted);
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
@@ -163,6 +161,9 @@ button {
 .btn-no:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 6px 20px var(--shadow-light);
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, #F5F5F5 0%, #E5E5E5 100%);
+    color: var(--accent-dark);
 }
 
 .btn-no:active {
@@ -198,26 +199,38 @@ button {
 
 /* ===== CONTAINER & TEXT EFFECTS ===== */
 .container {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
     border-radius: 60px;
     padding: 3rem;
     text-align: center;
     color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px var(--shadow-pink);
+    border: 1px solid var(--border-light);
+    box-shadow: 0 8px 32px var(--shadow-dark), inset 0 1px 0 rgba(229, 229, 229, 0.2);
     animation: animat 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
 }
 
 .letra-neon {
     font-family: "Dancing Script", cursive;
     margin: 0 0 1rem 0;
     font-size: 4rem;
-    background: linear-gradient(45deg, #fff, var(--accent-light));
+    background: linear-gradient(45deg, var(--accent-light), var(--text-primary), var(--accent-light));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px var(--shadow-pink);
+    text-shadow: 0 0 30px var(--shadow-dark);
     animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -227,12 +240,13 @@ button {
     padding: 1rem;
     font-size: 1.5rem;
     color: var(--text-secondary);
-    text-shadow: 0 0 10px var(--shadow-light);
+    text-shadow: 0 0 10px rgba(229, 229, 229, 0.5);
 }
 
 .flicker1, .flicker2, .flicker3 {
     display: inline-block;
     animation: flicker 2s infinite ease-in-out;
+    color: var(--accent-light);
 }
 
 .flicker2 {
@@ -246,7 +260,7 @@ button {
 @keyframes flicker {
     0%, 100% {
         opacity: 1;
-        text-shadow: 0 0 10px var(--shadow-light);
+        text-shadow: 0 0 10px var(--accent-light);
     }
     50% {
         opacity: 0.7;
@@ -256,10 +270,10 @@ button {
 
 @keyframes glow {
     from {
-        filter: drop-shadow(0 0 10px var(--shadow-pink));
+        filter: drop-shadow(0 0 10px var(--shadow-dark));
     }
     to {
-        filter: drop-shadow(0 0 20px var(--shadow-pink)) drop-shadow(0 0 30px var(--accent-light));
+        filter: drop-shadow(0 0 20px var(--shadow-dark)) drop-shadow(0 0 30px var(--accent-light));
     }
 }
 
@@ -280,6 +294,7 @@ button {
     border-radius: 50%;
     background: var(--bubble-color);
     animation: bubbleFloat linear infinite;
+    border: 1px solid rgba(212, 165, 165, 0.3);
 }
 
 /* Using nth-child with CSS variables for better efficiency */
@@ -293,6 +308,7 @@ button {
 .burbuja:nth-child(8) { left: 75%; width: 80px; height: 80px; animation-duration: 5s; animation-delay: 5s; }
 .burbuja:nth-child(9) { left: 85%; width: 30px; height: 30px; animation-duration: 6s; animation-delay: 2s; }
 .burbuja:nth-child(10) { left: 95%; width: 65px; height: 65px; animation-duration: 3s; animation-delay: 2s; }
+
 @keyframes bubbleFloat {
     0% {
         bottom: -100px;
